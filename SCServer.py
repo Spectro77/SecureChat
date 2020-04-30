@@ -24,7 +24,6 @@ print("To send messages client need's to connect")
 def decryptor(rcvdData, wordlist):
     for i in wordlist:
         ires = str(int(int(ord(i))*seed))
-        print(ires)
         ires = hashlib.md5(ires.encode()).hexdigest()
         if (ires == rcvdData):
             print(i, end = "")
