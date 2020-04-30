@@ -23,9 +23,11 @@ print("Lista dostępnych znaków: ", wordlist)
 print("Żeby wysyłać wiadomości trzeba połączyć klienta")
 def decryptor(rcvdData, wordlist):
     for i in wordlist:
-        ires = hashlib.md5(i.encode()).hexdigest()
+        ires = str(int(int(ord(i))*seed))
+        ires = hashlib.md5(ires.encode()).hexdigest()
         if (ires == rcvdData):
             print(i, end = "")
+            break
 while True:
     s.listen(5)
     c, addr = s.accept()
@@ -33,9 +35,6 @@ while True:
     while True:
         try:
             rcvdData = c.recv(1024).decode()
-            rcvdData = int(rcvdData)
-            rcvdData = bytes(rcvdData / seed)
-            rcvdData = rcvdData.decode()
             if(rcvdData == "b99834bc19bbad24580b3adfa04fb947"):
                 print("")
             if(rcvdData == ""):
