@@ -3,13 +3,13 @@ import hashlib
 from os import system
 
 s = socket.socket()
-print("   _____                                    _         _             _   ")
-print("  / ____|                                  | |       | |           | |  ")
-print(" | (___    ___   ___  _   _  _ __  ___   __| |   ___ | |__    __ _ | |_ ")
-print("  \___ \  / _ \ / __|| | | || '__|/ _ \ / _` |  / __|| '_ \  / _` || __|")
-print("  ____) ||  __/| (__ | |_| || |  |  __/| (_| | | (__ | | | || (_| || |_ ")
-print(" |_____/  \___| \___| \__,_||_|   \___| \__,_|  \___||_| |_| \__,_| \__|")
-print("                                          S E R V E R                 \n")
+print("   _____                                        _             _   ")
+print("  / ____|                                      | |           | |  ")
+print(" | (___    ___   ___  _   _  _ __  ___     ___ | |__    __ _ | |_ ")
+print("  \___ \  / _ \ / __|| | | || '__|/ _ \   / __|| '_ \  / _` || __|")
+print("  ____) ||  __/| (__ | |_| || |  |  __/  | (__ | | | || (_| || |_ ")
+print(" |_____/  \___| \___| \__,_||_|   \___|   \___||_| |_| \__,_| \__|")
+print("                                   S E R V E R                  \n")
 print("Witaj w szyfrowanym komunikatorze!")
 print("Aby móc korzystać z programu należy go skonfigurować")
 print("Lista adresów przypisana do tego urządzenia: \n",socket.gethostbyname_ex(socket.gethostname()),"\n")
@@ -35,7 +35,7 @@ while True:
     while True:
         try:
             rcvdData = c.recv(1024).decode()
-            if(rcvdData == "b99834bc19bbad24580b3adfa04fb947"):
+            if(rcvdData == hashlib.md5(str(int(int(ord("|"))*seed)).encode()).hexdigest()):
                 print("")
             if(rcvdData == ""):
                 print("\nZamknięto połączenie z ", addr)
