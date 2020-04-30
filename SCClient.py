@@ -4,13 +4,13 @@ import hashlib
 
 def splitword(word):
     return [char for char in word]
-print("   _____                                    _         _             _   ")
-print("  / ____|                                  | |       | |           | |  ")
-print(" | (___    ___   ___  _   _  _ __  ___   __| |   ___ | |__    __ _ | |_ ")
-print("  \___ \  / _ \ / __|| | | || '__|/ _ \ / _` |  / __|| '_ \  / _` || __|")
-print("  ____) ||  __/| (__ | |_| || |  |  __/| (_| | | (__ | | | || (_| || |_ ")
-print(" |_____/  \___| \___| \__,_||_|   \___| \__,_|  \___||_| |_| \__,_| \__|")
-print("                                          C L I E N T                 \n")
+print("   _____                                        _             _   ")
+print("  / ____|                                      | |           | |  ")
+print(" | (___    ___   ___  _   _  _ __  ___     ___ | |__    __ _ | |_ ")
+print("  \___ \  / _ \ / __|| | | || '__|/ _ \   / __|| '_ \  / _` || __|")
+print("  ____) ||  __/| (__ | |_| || |  |  __/  | (__ | | | || (_| || |_ ")
+print(" |_____/  \___| \___| \__,_||_|   \___|   \___||_| |_| \__,_| \__|")
+print("                                   C L I E N T                  \n")
 print("Witaj w szyfrowanym komunikatorze!")
 print("Aby móc korzystać z programu należy połączyć się ze skonfigurowanym serwerem\n")
 s = socket.socket()
@@ -29,10 +29,9 @@ while True:
     i = splitword(i)
     i = splitword(i)
     for word in i:
-        time.sleep(0.3)
+        time.sleep(0.1)
         wordascii = str(int(ord(word))*seed)
-        print("log: "+ wordascii)
         wordres = hashlib.md5(wordascii.encode()).hexdigest()
-        wordres = bytes(wordres, "utf8")
         print(wordres," - ",word)
+        wordres = bytes(wordres, "utf8")
         s.send(wordres)
