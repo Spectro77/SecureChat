@@ -29,10 +29,10 @@ while True:
     i = splitword(i)
     i = splitword(i)
     for word in i:
-        time.sleep(0.1)
-        counter = 1
-        wordres = hashlib.md5(word.encode()).hexdigest()
-        word
+        time.sleep(0.3)
+        wordascii = str(int(ord(word))*seed)
+        print("log: "+ wordascii)
+        wordres = hashlib.md5(wordascii.encode()).hexdigest()
         wordres = bytes(wordres, "utf8")
         print(wordres," - ",word)
         s.send(wordres)
